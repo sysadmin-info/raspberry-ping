@@ -1,5 +1,5 @@
 #!/bin/bash
-# put in /etc/crontab this: */2 *   * * *   root    /home/pi/ping.sh
+*/2 * * * * pi /bin/bash -x /home/pi/ping.sh > /var/log/pinglog/log-`date +\%Y-\%m-\%d_\%H:\%M`.log 2>&1
 pidfile=/home/pi/ping.sh.pid
 pidfiletmp=/home/pi/ping.sh.pidfile.tmp
 data=$( date +"%Y-%m-%d %H:%M:%S" )
@@ -20,7 +20,7 @@ ping -t 5 -c 60 192.168.1.1 > /tmp/ping_drop.tmp
 # put date into ping_drop_all log
 date >> /tmp/ping_drop_all
 # put content from /tmp/ping_drop.tmp into /tmp/ping_drop.tmp that contains logs with the date 
-cat /tmp/ping_drop.tmp >> /tmp/ping_drop.tmp
+/bin/cat /tmp/ping_drop.tmp >> /tmp/ping_drop.tmp
 
 # Cut the loss value from the /tmp/ping_drop_all
 LOSS=`grep transmitted  /tmp/ping_drop.tmp | awk -F "," '{print $3}' |cut -c 2- |awk -F "%" '{print $1}'`
