@@ -1,6 +1,8 @@
 #!/bin/bash
-# Add the below in /etc/crontab
+
+# Add the below row in /etc/crontab
 #*/2 * * * * pi /bin/bash -x /home/pi/ping.sh > /var/log/pinglog/log-`date +\%Y-\%m-\%d_\%H:\%M`.log 2>&1
+
 pidfile=/home/pi/ping.sh.pid
 pidfiletmp=/home/pi/ping.sh.pidfile.tmp
 data=$( date +"%Y-%m-%d %H:%M:%S" )
