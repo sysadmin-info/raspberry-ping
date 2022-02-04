@@ -1,4 +1,7 @@
 #!/bin/bash
+# Script: ping.sh
+# Purpose: Pings the router to check the connectivity. Logs everything into logs. If the Wi-Fi is down it ups the interface. Written for Raspberry Pi 2/3/4, but it will work in ant Linux distro. Just change the paths. 
+# Author: Adrian Ambroziak <sysadmin.info.pl> under GPL v3.x+
 
 # Add the below row in /etc/crontab
 #*/2 * * * * pi /bin/bash -x /home/pi/ping.sh > /var/log/pinglog/log-`date +\%Y-\%m-\%d_\%H:\%M`.log 2>&1
